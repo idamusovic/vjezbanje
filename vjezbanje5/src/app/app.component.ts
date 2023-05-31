@@ -7,8 +7,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'task 5';
-  public name = 'IDA';
-  public message = "";
+  public name : string = 'someone';
+  public inputValue :string = '';
   public niz = [];
   public i = 0;
 

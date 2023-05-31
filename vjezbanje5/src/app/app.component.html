@@ -1,18 +1,20 @@
 <div class="container">
     <div class="row">
-        <h1>{{ message }}</h1>
+        <label for="">Enter your name here>>> </label>
+        <input 
+        type="text" 
+        [(ngModel)]="name">
+        <h1>Welcome to {{ name + "'s"}} project!</h1>
     </div>
-    <app-test 
-    [hihihi]="name"
-    (childEvent)="message=$event"></app-test>
+    <app-test></app-test>
 
     <div class="row">
         <input 
         type="text"
-        [value]="">
+        [(ngModel)]="inputValue">
         <button 
         class="btn btn-warning"
         (click)="prvaFun()">Heyo</button>
-        <h1></h1>
+        <h1>{{ inputValue }}</h1>
     </div>
 </div>
