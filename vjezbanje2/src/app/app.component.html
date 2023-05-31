@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <app-success></app-success>
+      <app-warning></app-warning>
+
+      <h1>WELCOME {{username}}</h1>
+      <input [(ngModel)]="username" type="text" class="form-control">
+      <button 
+      class="btn btn-danger" 
+      [disabled]="username === ''" 
+      (click)="onReset()">RESET</button>
+      
+    </div>
+  </div>
+</div>
