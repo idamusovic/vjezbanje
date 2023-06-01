@@ -10,6 +10,7 @@ export class AppComponent {
   public name : string = 'someone';
   public inputValue :string = '';
   public niz = [];
+  public latestInput: string;
   public i = 0;
 
 
@@ -17,6 +18,11 @@ export class AppComponent {
     this.niz.push(this.i);
     console.log(this.niz);
     this.i++;
+  }
+
+  drugaFun(){
+    this.niz.push(this.inputValue);
+    console.log(this.niz);
   }
 
 }
