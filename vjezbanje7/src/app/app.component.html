@@ -1,41 +1,71 @@
 <div class="container">
   <div class="row">
-    <div class="col-xs-12">
+    <div class="col-sm-4">
       <h1>The Form</h1>
-      <form>
-        <div class="row">
+
+      <form #f="ngForm" (ngSubmit)="onSubmit()">
+        <div class="row form-group">
           <div class="col-xs-12">
             <label>Email</label>
             <input 
+            type="email"
+            id="email"
+            name="email"
+            ngModel
             class="form-control"
-            required>
+            required
+            email
+            #email="ngModel">
+            <span class="help-block" *ngIf="!email.valid && email.touched">Please enter a valid email!</span>
           </div>
+          
         </div>
         
-        <div class="row" style="margin-top: 20px;">
+        <div class="row form-group" style="margin-top: 20px;">
           <div class="col-xs-12">
-            <label>Select a subscription plan:</label>
-            <select class="form-control">
-              <option value="basic">Basic</option>
+            <label for="subscription">Select a subscription plan:</label>
+            <select 
+            name="subscription" 
+            class="form-control"
+            [ngModel]="selectedOption" 
+            id="subscription">
+              <!-- <option value="basic">Basic</option>
               <option value="advanced" selected>Advanced</option>
-              <option value="pro">Pro</option>
+              <option value="pro">Pro</option> -->
+              <option 
+              *ngFor="let subscription of subscriptions"
+              [value]="subscription"> {{ subscription }}</option>
             </select>
           </div>
         </div>
 
-          <div class="row" style="margin-top: 20px;">
+          <div class="row form-group" style="margin-top: 20px;">
             <div class="col-xs-12">
-              <label>Password</label>
+              <label for="password">Password</label>
               <input 
+              name="password"
               type="password"
               class="form-control"
-              required>
+              ngModel
+              required
+              #password="ngModel">
+              <span 
+              class="help-block" 
+              *ngIf="!password.valid && password.touched"
+              >Please enter a valid password!</span>
             </div>
           </div>
         
-        <hr>
-        <button class="btn btn-success">Submit</button>
-        <button class="btn btn-danger" style="margin-left: 10px;">Cancel</button>
+        <p 
+        *ngIf="!f.valid && f.touched"
+        style="color: crimson; font-size: large;">The form is not valid!</p>
+        <button 
+        class="btn btn-success" 
+        type="submit">Submit</button>
+
+        <button 
+        class="btn btn-danger" 
+        style="margin-left: 10px;">Cancel</button>
       </form>
       
 
